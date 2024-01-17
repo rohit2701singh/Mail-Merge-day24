@@ -8,7 +8,7 @@ with open("./Input/Letters/starting_letter.txt") as letter:
 
     for name in name_list:
         stripped_invitee_name = name.strip()    # remove whitespace
-        name_shifted_letter = sending_letter_template.replace(PLACEHOLDER, f"{stripped_invitee_name}")
-
-        with open(f"./Output/ReadyToSend/letter_for_{stripped_invitee_name}.txt", "w") as send_ready:
-            send_ready.write(name_shifted_letter)
+        if stripped_invitee_name:   # not an empty string
+            name_shifted_letter = sending_letter_template.replace(PLACEHOLDER, f"{stripped_invitee_name}")
+            with open(f"./Output/ReadyToSend/letter_for_{stripped_invitee_name}.txt", "w") as send_ready:
+                send_ready.write(name_shifted_letter)
